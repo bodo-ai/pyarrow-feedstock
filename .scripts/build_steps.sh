@@ -74,7 +74,7 @@ else
     conda-build "${RECIPE_ROOT}" -m "${CI_SUPPORT}/${CONFIG}.yaml" \
         --suppress-variables ${EXTRA_CB_OPTIONS:-} \
         --clobber-file "${CI_SUPPORT}/clobber_${CONFIG}.yaml" \
-        --extra-meta flow_run_id="${flow_run_id:-}" remote_url="${remote_url:-}" sha="${sha:-}"
+        --extra-meta flow_run_id="${flow_run_id:-}" remote_url="${remote_url:-}" sha="${sha:-}" \
         -c https://$USERNAME:$TOKEN@bodo.jfrog.io/artifactory/api/conda/bodo.ai-platform
     ( startgroup "Validating outputs" ) 2> /dev/null
 
