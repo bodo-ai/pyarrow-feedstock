@@ -85,7 +85,8 @@ else
     ( startgroup "Uploading packages" ) 2> /dev/null
 
     if [[ "${UPLOAD_PACKAGES}" != "False" ]] && [[ "${IS_PR_BUILD}" == "False" ]]; then
-        upload_package --validate --feedstock-name="${FEEDSTOCK_NAME}"  "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"
+        # upload_package --validate --feedstock-name="${FEEDSTOCK_NAME}"  "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"
+        bash ${FEEDSTOCK_ROOT}/.scripts/upload_binary.sh
     fi
 
     ( endgroup "Uploading packages" ) 2> /dev/null
