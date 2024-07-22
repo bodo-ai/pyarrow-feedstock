@@ -68,10 +68,14 @@ if [[ "${BUILD_WITH_CONDA_DEBUG:-0}" == 1 ]]; then
     # Drop into an interactive shell
     /bin/bash
 else
+    USERNAME=`cat /home/secrets/secret_file | grep artifactory.ci.username | cut -f 2 -d' '`
+    TOKEN=`cat /home/secrets/secret_file | grep artifactory.ci.token | cut -f 2 -d' '`
+
     conda-build "${RECIPE_ROOT}" -m "${CI_SUPPORT}/${CONFIG}.yaml" \
         --suppress-variables ${EXTRA_CB_OPTIONS:-} \
         --clobber-file "${CI_SUPPORT}/clobber_${CONFIG}.yaml" \
         --extra-meta flow_run_id="${flow_run_id:-}" remote_url="${remote_url:-}" sha="${sha:-}"
+        -c https://$USERNAME:$TOKEN@bodo.jfrog.io/artifactory/api/conda/bodo.ai-platform
     ( startgroup "Validating outputs" ) 2> /dev/null
 
     validate_recipe_outputs "${FEEDSTOCK_NAME}"
