@@ -2,5 +2,8 @@
 # update the conda-forge.yml and/or the recipe/meta.yaml.
 # -*- mode: yaml -*-
 
+trigger: none
+pr: none
+
 jobs:
   - template: ./.azure-pipelines/azure-pipelines-linux.yml
