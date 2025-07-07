@@ -292,7 +292,7 @@ outputs:
         {% set tests_to_skip = tests_to_skip + " or test_env_var_io_thread_count" %}      # [aarch64 or ppc64le]
         # vvvvvvv TESTS THAT SHOULDN'T HAVE TO BE SKIPPED vvvvvvv
         # Bodo change: skip orc test for pyarrow 19.0.1
-        {% set test_to_skip = tests_to_skip + " or test_buffer_readwrite_with_writeoptions" %}
+        {% set tests_to_skip = tests_to_skip + " or test_buffer_readwrite_with_writeoptions" %}
         # https://github.com/apache/arrow/issues/45229
         {% set tests_to_skip = tests_to_skip + " or test_sparse_coo_tensor_scipy_roundtrip" %}
         # https://github.com/apache/arrow/issues/43800
