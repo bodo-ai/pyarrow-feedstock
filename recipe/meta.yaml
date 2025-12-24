@@ -313,7 +313,7 @@ outputs:
         # gandiva tests are segfaulting on ppc
         {% set tests_to_skip = tests_to_skip + " or test_gandiva" %}                                # [ppc64le]
         # ^^^^^^^ TESTS THAT SHOULDN'T HAVE TO BE SKIPPED ^^^^^^^
-        # - pytest pyarrow/ -rfEs -k "not ({{ tests_to_skip }})"
+        - pytest pyarrow/ -rfEs -k "not ({{ tests_to_skip }})"
 
     about:
       home: http://github.com/apache/arrow
